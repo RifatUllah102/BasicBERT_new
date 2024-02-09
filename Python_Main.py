@@ -414,22 +414,8 @@ def Train(args, logger, model, train_dataloader, processor, task_name, label_lis
 def evaluation(args, logger, model, eval_dataloader, all_guids, task_name, return_preds=False, return_loss=False):
     """
     Evaluate the model on the given dataloader.
-
-    Args:
-        args (Namespace): Training arguments.
-        logger: Logger for logging evaluation results.
-        model: The model to evaluate.
-        eval_dataloader: Dataloader for evaluation data.
-        all_guids: List of unique identifiers for the evaluation data.
-        task_name: Name of the task.
-        ###### tokenizer: Tokenizer for saving the model.
-        return_preds (bool): Whether to return predictions.
-        return_loss (bool): Whether to return the evaluation loss.
-
-    Returns:
-        If return_preds is True, returns predictions. If return_loss is True, returns evaluation loss.
-        Otherwise, returns a dictionary of evaluation metrics.
     """
+
     model.eval()
     mip_cos = []
     bmip_cos = []
@@ -649,18 +635,18 @@ def main():
 
     # # model = load_pretrained_model(args)
     # # Run training
-    # trained_model, best_result = Train(
-    #     args,
-    #     logger,
-    #     model,
-    #     train_dataloader,
-    #     processor,
-    #     task_name,
-    #     label_list,
-    #     tokenizer,
-    #     output_mode
-    # )
-    # print(f"Best Result from Main function: {best_result}")
+    trained_model, best_result = Train(
+        args,
+        logger,
+        model,
+        train_dataloader,
+        processor,
+        task_name,
+        label_list,
+        tokenizer,
+        output_mode
+    )
+    print(f"Best Result from Main function: {best_result}")
     # print("Starting from Here...!")
     # ########### Training ###########
 
